@@ -1,24 +1,23 @@
 $(function () {
     //listener for add todo
-    $("#addTodo").click(function (e) {
-        //value in input field
-        var value = $(this).prev().val();
+    $("#addTodo").click(function () {
+        //procede if form field has inputted text
+        if ($(this).prev().val()) {
+            //value in input field
+            var value = $(this).prev().val();
 
-        //make List item and button
-        var item = `<li class="list-group-item-primary p-1 pl-3">${value}
-        
-        <button id="delete" class="btn btn-small btn-primary float-right mr-2"> Delete</button>
-        <input id="checkbox" type="checkbox" class="form-check-inline float-right m-2">
-        <label class="form-check-label float-right">Done</label></li>`
+            //make List item with inputted todo item, checkbox, and button
+            var item = `<li class="list-group-item-primary p-1 pl-3">${value}
+            <button id="delete" class="btn btn-small btn-primary float-right mr-2"> Delete</button>
+            <input id="checkbox" type="checkbox" class="form-check-inline float-right m-2">
+            <label class="form-check-label float-right">Done</label></li>`
 
-        //select ul and add list item to it
-        $("#list").append(item);
+            //select ul and add list item to it
+            $("#list").append(item);
 
-
-
-
-        //clear input field
-        $(this).prev().val("");
+            //clear input field
+            $(this).prev().val("");
+        }
     });
 
     //in order to trigger click event on dynamically created delete button
