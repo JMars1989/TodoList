@@ -21,8 +21,14 @@ $(function () {
     });
 
     //in order to trigger click event on dynamically created delete button
-    $("ul").on("click", "button", function (e) {
+    $("ul").on("click", "button", function () {
         $(this).parent().remove();
+
+        //if UL is empty, tell user
+        if ($("#list li").length === 0) {
+           // alert("No more to do!");
+            $("#modal").modal("show");
+        }
     });
 
     //if checked, line through text
@@ -33,4 +39,9 @@ $(function () {
             $(this).parent().css('text-decoration', 'none');
         }
     });
+
+
+
+
+
 });
