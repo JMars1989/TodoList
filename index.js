@@ -5,10 +5,17 @@ $(function () {
         var value = $(this).prev().val();
 
         //make List item and button
-        var item = `<li class="list-group-item-primary p-1 pl-3">${value} <button id="delete" class="btn btn-small btn-primary float-right mr-2"> Done</button></li>`
+        var item = `<li class="list-group-item-primary p-1 pl-3">${value}
+        
+        <button id="delete" class="btn btn-small btn-primary float-right mr-2"> Delete</button>
+        <input id="checkbox" type="checkbox" class="form-check-inline float-right m-2">
+        <label class="form-check-label float-right">Done</label></li>`
 
         //select ul and add list item to it
         $("#list").append(item);
+
+
+
 
         //clear input field
         $(this).prev().val("");
@@ -17,5 +24,14 @@ $(function () {
     //in order to trigger click event on dynamically created delete button
     $("ul").on("click", "button", function (e) {
         $(this).parent().remove();
+    });
+
+    //if checked, line through text
+    $("ul").on("click", "#checkbox", function () {
+        if ($(this).is(":checked")) {
+            $(this).parent().css('text-decoration', 'line-through');
+        } else {
+            $(this).parent().css('text-decoration', 'none');
+        }
     });
 });
